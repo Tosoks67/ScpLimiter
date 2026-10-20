@@ -9,6 +9,7 @@ substitute_role: ClassD
 ```
 
 `scp_limit` - SCP limit. Any SCP beyond that limit gets their role changed to `substitute_role`
+
 `substitute_role` - the role to set to SCPs who surpassed the limit (see below for possible values)
 
 ### Possible values of `substitute_role`
