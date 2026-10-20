@@ -1,6 +1,8 @@
 # ScpLimiter
 is a simple and lightweight plugin which (as the name suggests) **limits the number of SCPs** that can spawn *per each round*
 
+When the round starts, this plugin skips (randomly) an `scp_limit` number of SCP players and the rest are set to `substitute_role`
+
 ## Configuration
 ```yaml
 scp_limit: 2
