@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScpLimiter", "ScpLimiter.csproj", "{AB3E7EA4-9A9C-49E3-BE3D-9827067BA7BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB3E7EA4-9A9C-49E3-BE3D-9827067BA7BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB3E7EA4-9A9C-49E3-BE3D-9827067BA7BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB3E7EA4-9A9C-49E3-BE3D-9827067BA7BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB3E7EA4-9A9C-49E3-BE3D-9827067BA7BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

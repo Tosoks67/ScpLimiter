@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net48</TargetFramework>
+        <OutputType>Library</OutputType>
+        <RootNamespace>ScpLimiter</RootNamespace>
+        <AssemblyName>ScpLimiter</AssemblyName>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>preview</LangVersion>
+        <PlatformTarget>x64</PlatformTarget>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+        <Configurations>Release;Debug</Configurations>
+        <Platforms>AnyCPU</Platforms>
+        <WarningLevel>4</WarningLevel>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <Optimize>false</Optimize>
+        <DefineConstants>DEBUG;TRACE;HAVE_NULLABLE_ATTRIBUTES</DefineConstants>
+        <OutputPath>bin\Debug\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <Optimize>true</Optimize>
+        <DefineConstants>TRACE;HAVE_NULLABLE_ATTRIBUTES</DefineConstants>
+        <OutputPath>bin\Release\</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="UnityEngine">
+            <HintPath>$(SL_DEV_REFERENCES)\UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>$(SL_DEV_REFERENCES)\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <!-- QoL moving the dll -->
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Copy SourceFiles="$(TargetDir)ScpLimiter.dll" DestinationFolder="$(LABAPI_GLOBAL_PLUGINS)" Condition="'$(LABAPI_GLOBAL_PLUGINS)' != ''"/>
+        <Copy SourceFiles="$(TargetDir)ScpLimiter.dll" DestinationFolder="$(SL_DEV_REFERENCES)" Condition="'$(SL_DEV_REFERENCES)' != ''"/>
+    </Target>
+
+    <!-- ignore warnings about mismatch between versions of core libs
+        and unreachable code because compiler is stupid -->
+    <PropertyGroup>
+        <NoWarn>$(NoWarn);MSB3277;CS0162</NoWarn>
+    </PropertyGroup>
+
+    <!-- nuget refs -->
+    <ItemGroup>
+        <PackageReference Include="ExMod.Exiled" Version="9.14.2"/>
+        <PackageReference Include="Northwood.LabAPI" Version="1.1.7"/>
+        <PackageReference Include="PolySharp" Version="1.16.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>
