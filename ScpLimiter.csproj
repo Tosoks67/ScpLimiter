@@ -33,6 +33,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Reference Include="Assembly-CSharp-firstpass">
+            <HintPath>$(SL_DEV_REFERENCES)\Assembly-CSharp-firstpass.dll</HintPath>
+        </Reference>
         <Reference Include="UnityEngine">
             <HintPath>$(SL_DEV_REFERENCES)\UnityEngine.dll</HintPath>
         </Reference>
@@ -43,7 +46,7 @@
 
     <!-- QoL moving the dll -->
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-        <Copy SourceFiles="$(TargetDir)ScpLimiter.dll" DestinationFolder="$(LABAPI_GLOBAL_PLUGINS)" Condition="'$(LABAPI_GLOBAL_PLUGINS)' != ''"/>
+        <Copy SourceFiles="$(TargetDir)ScpLimiter.dll" DestinationFolder="$(LABAPI_PLUGINS)" Condition="'$(LABAPI_PLUGINS)' != ''"/>
         <Copy SourceFiles="$(TargetDir)ScpLimiter.dll" DestinationFolder="$(SL_DEV_REFERENCES)" Condition="'$(SL_DEV_REFERENCES)' != ''"/>
     </Target>
 
